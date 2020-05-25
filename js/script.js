@@ -19,23 +19,22 @@ for (var i = 0; i < points.length; i++) {
 function clickEvent() {
     if (this.classList.contains("clicked")) {
         this.classList.remove("clicked");
-    }
-    else {
+    } else {
         this.classList.add("clicked")
     }
 }
 
 //Event listeners op de cijfers in het kunstwerk met daarachter de functie die uitgevoerd wordt als er geklikt wordt
-document.getElementById("c1").addEventListener('click', function() {
+document.getElementById("c1").addEventListener('click', function () {
     random_dots(1);
 });
-document.getElementById("c2").addEventListener('click', function() {
+document.getElementById("c2").addEventListener('click', function () {
     random_dots(2);
 });
-document.getElementById("c3").addEventListener('click', function() {
+document.getElementById("c3").addEventListener('click', function () {
     random_dots(3);
 });
-document.getElementById("c4").addEventListener('click', function() {
+document.getElementById("c4").addEventListener('click', function () {
     random_dots(4);
 });
 
@@ -51,24 +50,40 @@ document.getElementById("twee_button").addEventListener('click', highlight_2);
 document.getElementById("drie_button").addEventListener('click', highlight_3);
 document.getElementById("vier_button").addEventListener('click', highlight_4);
 
-//zorgt dat dingen gebeuren wanneer een toets wordt ingedrukt
-document.addEventListener('keypress', function(e) {
+//zorgt dat dingen worden uitgevoerd wanneer een toets wordt ingedrukt
+document.addEventListener('keypress', function (e) {
     switch (e.keyCode) {
-        case 53: random_dots(1); break;
-        case 54: random_dots(2); break;
-        case 55: random_dots(3); break;
-        case 56: random_dots(4); break;
-        case 49: highlight_1(); break;
-        case 50: highlight_2(); break;
-        case 51: highlight_3(); break;
-        case 52: highlight_4(); break;
+        case 53:
+            random_dots(1);
+            break;
+        case 54:
+            random_dots(2);
+            break;
+        case 55:
+            random_dots(3);
+            break;
+        case 56:
+            random_dots(4);
+            break;
+        case 49:
+            highlight_1();
+            break;
+        case 50:
+            highlight_2();
+            break;
+        case 51:
+            highlight_3();
+            break;
+        case 52:
+            highlight_4();
+            break;
     }
 });
 
 //de class clicked weghalen van alle bolletjes
 function clear_dots() {
     var clicked = document.getElementsByClassName("clicked");
-    while(clicked.length > 0) {
+    while (clicked.length > 0) {
         clicked[0].classList.remove("clicked");
     }
 }
@@ -77,17 +92,16 @@ function clear_dots() {
 function background_change() {
     if (document.body.style.backgroundColor == "white") {
         document.body.style.backgroundColor = "black";
-    }
-    else {
+    } else {
         document.body.style.backgroundColor = "white";
     }
 }
 
 //random bolletjes pakken uit het totaal aantal bolletjes
 function getRandomInt() {
-  var min = 0;
-  var max = points.length;
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+    var min = 0;
+    var max = points.length;
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
 
@@ -116,22 +130,20 @@ function random_dots(num) {
 
 
 //toggle functie
-function flip () {
+function flip() {
     if (base.classList.contains("flip")) {
         base.classList.remove("flip");
-    }
-    else {
+    } else {
         base.classList.remove("float");
         base.classList.add("flip");
     }
 }
 
 //toggle functie
-function shake () {
+function shake() {
     if (base.classList.contains("shake")) {
         base.classList.remove("shake");
-    }
-    else {
+    } else {
         base.classList.remove("float");
         base.classList.add("shake");
     }
@@ -141,8 +153,7 @@ function shake () {
 function rotate() {
     if (base.classList.contains("rotate")) {
         base.classList.remove("rotate");
-    }
-    else {
+    } else {
         base.classList.remove("float");
         base.classList.add("rotate");
     }
@@ -152,8 +163,7 @@ function rotate() {
 function float() {
     if (base.classList.contains("float")) {
         base.classList.remove("float");
-    }
-    else {
+    } else {
         base.classList.remove("rotate");
         base.classList.add("float");
     }
@@ -163,9 +173,10 @@ function float() {
 function highlight(id, type) {
 
     var object = document.getElementById(id);
-    object.getElementsByClassName(type)[0].classList.add(type+"-highlight");
+    object.getElementsByClassName(type)[0].classList.add(type + "-highlight");
 }
 
+//de highlights weghalen
 function clear_highlights() {
     var highlights = document.getElementsByClassName("st1-highlight");
     while (highlights.length > 0) {
@@ -263,7 +274,7 @@ function highlight_3() {
     highlight("streepje_13", "st1");
     highlight("streepje_12", "st1");
     highlight("streepje_11", "st1");
-    highlight("streepje_8",  "st1");
+    highlight("streepje_8", "st1");
 
     // highligh kromme streepjes
     highlight("streepje_10", "st0");
@@ -302,6 +313,8 @@ function highlight_4() {
 
 
 
+//Gebruikte bronnen:
+
 //https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
 //https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -316,8 +329,4 @@ function highlight_4() {
 //https://stackoverflow.com/questions/5597060/detecting-arrow-key-presses-in-javascript
 //https://stackoverflow.com/questions/197748/how-do-i-change-the-background-color-with-javascript
 
-
-
-
-
-
+//Bij de random dots en highlights hulp gehad van Dante Niewenhuis.
